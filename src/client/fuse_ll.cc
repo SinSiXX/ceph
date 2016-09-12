@@ -43,8 +43,8 @@
 
 static uint32_t new_encode_dev(dev_t dev)
 {
-	unsigned major = MAJOR(dev);
-	unsigned minor = MINOR(dev);
+	unsigned major = CEPH_MAJOR(dev);
+	unsigned minor = CEPH_MINOR(dev);
 	return (minor & 0xff) | (major << 8) | ((minor & ~0xff) << 12);
 }
 
@@ -52,7 +52,7 @@ static dev_t new_decode_dev(uint32_t dev)
 {
 	unsigned major = (dev & 0xfff00) >> 8;
 	unsigned minor = (dev & 0xff) | ((dev >> 12) & 0xfff00);
-	return MKDEV(major, minor);
+	return CEPH_MKDEV(major, minor);
 }
 
 class CephFuse::Handle {

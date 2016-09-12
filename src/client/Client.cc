@@ -6860,8 +6860,8 @@ void Client::fill_statx(Inode *in, unsigned int mask, struct ceph_statx *stx)
    stx->stx_ino = in->faked_ino;
   else
     stx->stx_ino = in->ino;
-  stx->stx_rdev_minor = MINOR(in->rdev);
-  stx->stx_rdev_major = MAJOR(in->rdev);
+  stx->stx_rdev_minor = CEPH_MINOR(in->rdev);
+  stx->stx_rdev_major = CEPH_MAJOR(in->rdev);
   stx->stx_mask |= (CEPH_STATX_INO|CEPH_STATX_RDEV);
 
   if (mask & CEPH_CAP_AUTH_SHARED) {

@@ -94,12 +94,12 @@ struct CommandOp
 };
 
 /* Device bit shift handling */
-#define MINORBITS	20
-#define MINORMASK	((1U << MINORBITS) - 1)
+#define CEPH_MINORBITS		20
+#define CEPH_MINORMASK		((1U << CEPH_MINORBITS) - 1)
 
-#define MAJOR(dev)	((unsigned int) ((dev) >> MINORBITS))
-#define MINOR(dev)	((unsigned int) ((dev) & MINORMASK))
-#define MKDEV(ma,mi)	(((ma) << MINORBITS) | (mi))
+#define CEPH_MAJOR(dev)		((unsigned int) ((dev) >> CEPH_MINORBITS))
+#define CEPH_MINOR(dev)		((unsigned int) ((dev) & CEPH_MINORMASK))
+#define CEPH_MKDEV(ma,mi)	(((ma) << CEPH_MINORBITS) | (mi))
 
 /* error code for ceph_fuse */
 #define CEPH_FUSE_NO_MDS_UP    -(1<<2) /* no mds up deteced in ceph_fuse */
